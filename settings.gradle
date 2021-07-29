@@ -1,0 +1,15 @@
+buildscript {
+    repositories {
+        gradlePluginPortal()
+    }
+    dependencies {
+        classpath 'org.kordamp.gradle:settings-gradle-plugin:0.46.0'
+    }
+}
+apply plugin: 'org.kordamp.gradle.settings'
+
+rootProject.name = 'hello-root'
+
+projects {
+    directories = ['apps', 'libs']
+}
