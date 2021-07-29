@@ -66,6 +66,10 @@ dependencies {
     testCompile "org.grails:grails-web-testing-support"
     testCompile "org.grails:views-json-testing-support"
     testCompile "org.hibernate.validator:hibernate-validator:6.0.20.Final"
+
+    testCompile "com.agorapulse:dru:0.8.1"
+    testCompile "com.agorapulse:dru-client-gorm:0.8.1"
+    testCompile "com.agorapulse:dru-parser-json:0.8.1"
 }
 
 bootRun {
