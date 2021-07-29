@@ -35,3 +35,18 @@ allprojects {
         mavenCentral()
     }
 }
+
+projects {
+    subprojects {
+        dirs(['apps', 'libs']) {
+            // add Enterprise Groovy library
+            dependencies {
+                compileOnly 'com.virtualdogbert:enterprise-groovy:1.0.3'
+            }
+
+            // configure Enterprise Groovy library
+            compileGroovy.groovyOptions.configurationScript =
+                    rootProject.file('config/groovy/conventions.groovy')
+        }
+    }
+}

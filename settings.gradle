@@ -12,4 +12,11 @@ rootProject.name = 'hello-root'
 
 projects {
     directories = ['apps', 'libs']
+
+    plugins {
+        dirs(['apps',  'libs']) {
+            id 'groovy'
+            id 'java-library'
+        }
+    }
 }
