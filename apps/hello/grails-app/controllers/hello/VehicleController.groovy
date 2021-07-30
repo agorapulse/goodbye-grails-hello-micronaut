@@ -1,10 +1,14 @@
 package hello
 
-import grails.converters.JSON
+import com.fasterxml.jackson.databind.ObjectMapper
 import groovy.transform.CompileStatic
+
+import javax.inject.Inject
 
 @CompileStatic
 class VehicleController {
+
+    @Inject ObjectMapper objectMapper
 
     VehicleDataService vehicleDataService
 
@@ -14,7 +18,14 @@ class VehicleController {
             render status: 404
             return
         }
-        render vehicle as JSON
+        render contentType: 'application/json', text: objectMapper.writeValueAsString(
+                new VehicleResponse(
+                        id: vehicle.id,
+                        name: vehicle.name,
+                        make: vehicle.make,
+                        model: vehicle.model
+                )
+        )
     }
 
 }

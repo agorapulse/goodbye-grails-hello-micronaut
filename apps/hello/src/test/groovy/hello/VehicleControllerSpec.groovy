@@ -3,6 +3,7 @@ package hello
 import com.agorapulse.dru.Dru
 import com.agorapulse.gru.Gru
 import com.agorapulse.gru.grails.Grails
+import com.fasterxml.jackson.databind.ObjectMapper
 import grails.testing.gorm.DataTest
 import grails.testing.web.controllers.ControllerUnitTest
 import spock.lang.AutoCleanup
@@ -16,6 +17,13 @@ class VehicleControllerSpec extends Specification implements ControllerUnitTest<
 
     @AutoCleanup Gru gru = Gru.create(Grails.create(this)).prepare {
         include UrlMappings
+    }
+
+    @Override
+    Closure doWithSpring() {
+        return {
+            objectMapper(ObjectMapper)
+        }
     }
 
     void 'render with gru'() {
