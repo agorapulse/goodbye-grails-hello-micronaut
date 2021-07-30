@@ -18,10 +18,6 @@ apply plugin:"war"
 apply plugin:"org.grails.grails-web"
 apply plugin:"org.grails.plugins.views-json"
 
-repositories {
-    maven { url "https://repo.grails.org/grails/core" }
-}
-
 configurations {
     developmentOnly
     runtimeClasspath {
@@ -30,6 +26,8 @@ configurations {
 }
 
 dependencies {
+    implementation project(':hello-data')
+
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     compile "org.springframework.boot:spring-boot-starter-logging"
     compile "org.springframework.boot:spring-boot-autoconfigure"
@@ -61,6 +59,8 @@ dependencies {
     runtime "javax.xml.bind:jaxb-api:2.3.1"
 
     compileOnly 'com.agorapulse:groovy-code-checks-gorm:0.9.0'
+
+    testCompile project(':hello-data-test-data')
 
     testCompile "io.micronaut:micronaut-inject-groovy"
     testCompile "org.grails:grails-gorm-testing-support"
