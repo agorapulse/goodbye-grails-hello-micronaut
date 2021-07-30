@@ -10,6 +10,9 @@ sourceSets {
 }
 
 dependencies {
+    api platform("io.micronaut:micronaut-bom:$micronautVersion")
+    api 'io.micronaut.configuration:micronaut-hibernate-gorm'
+
     // GORM
     compile "org.grails:grails-datastore-gorm-hibernate5:${project['gorm.hibernate.version']}"
 

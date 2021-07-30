@@ -11,8 +11,8 @@ import javax.inject.Inject
 class VehicleController {
 
     @Inject ObjectMapper objectMapper
-
-    VehicleDataService vehicleDataService
+    @Inject VehicleService vehicleService
+    @Inject VehicleDataService vehicleDataService
 
     Object show(Long id) {
         Vehicle vehicle = vehicleDataService.findById(id)
