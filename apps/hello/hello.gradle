@@ -26,6 +26,7 @@ configurations {
 }
 
 dependencies {
+    implementation project(':hello-core')
     implementation project(':hello-data')
 
     developmentOnly("org.springframework.boot:spring-boot-devtools")

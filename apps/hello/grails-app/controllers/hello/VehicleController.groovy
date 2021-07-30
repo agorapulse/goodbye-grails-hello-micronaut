@@ -11,6 +11,7 @@ import javax.inject.Inject
 class VehicleController {
 
     @Inject ObjectMapper objectMapper
+    @Inject VehicleService vehicleService
 
     VehicleDataService vehicleDataService
 
