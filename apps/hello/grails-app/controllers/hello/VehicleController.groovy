@@ -2,6 +2,8 @@ package hello
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import groovy.transform.CompileStatic
+import hello.legacy.Vehicle
+import hello.legacy.VehicleDataService
 
 import javax.inject.Inject
 

@@ -6,6 +6,8 @@ import com.agorapulse.gru.grails.Grails
 import com.fasterxml.jackson.databind.ObjectMapper
 import grails.testing.gorm.DataTest
 import grails.testing.web.controllers.ControllerUnitTest
+import hello.legacy.Vehicle
+import hello.legacy.VehicleDataService
 import spock.lang.AutoCleanup
 import spock.lang.Specification
 

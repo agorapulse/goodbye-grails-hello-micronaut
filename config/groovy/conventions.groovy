@@ -16,10 +16,6 @@ Map conventions = [
                 'org.grails.compiler.ValidateableTypeCheckingExtension',
                 'org.grails.compiler.NamedQueryTypeCheckingExtension',
                 'org.grails.compiler.HttpServletRequestTypeCheckingExtension',
-                'org.grails.compiler.WhereQueryTypeCheckingExtension',
-                'org.grails.compiler.DynamicFinderTypeCheckingExtension',
-                'org.grails.compiler.DomainMappingTypeCheckingExtension',
-                'org.grails.compiler.RelationshipManagementMethodTypeCheckingExtension'
         ],
 ]
 System.setProperty(

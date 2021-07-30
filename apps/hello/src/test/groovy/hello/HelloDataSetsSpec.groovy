@@ -2,6 +2,7 @@ package hello
 
 import com.agorapulse.dru.Dru
 import grails.testing.gorm.DataTest
+import hello.legacy.Vehicle
 import spock.lang.AutoCleanup
 import spock.lang.Specification
 

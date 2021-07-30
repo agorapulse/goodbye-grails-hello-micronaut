@@ -1,4 +1,4 @@
-package hello
+package hello.legacy
 
 import grails.gorm.services.Service
 import groovy.transform.CompileStatic
