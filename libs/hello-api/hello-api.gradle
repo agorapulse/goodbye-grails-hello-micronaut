@@ -1,0 +1,58 @@
+
+dependencies {
+    api project(':hello-core')
+
+    annotationProcessor platform("io.micronaut:micronaut-bom:$micronautVersion")
+    annotationProcessor "io.micronaut:micronaut-inject-java"
+    annotationProcessor "io.micronaut:micronaut-validation"
+
+    implementation platform("io.micronaut:micronaut-bom:$micronautVersion")
+
+    implementation "io.micronaut:micronaut-core"
+    implementation "io.micronaut:micronaut-inject"
+    implementation "io.micronaut:micronaut-validation"
+    implementation "io.micronaut:micronaut-runtime"
+    implementation "io.micronaut:micronaut-http"
+    implementation "io.micronaut:micronaut-router"
+
+    compileOnly "io.micronaut:micronaut-inject-groovy"
+
+    testAnnotationProcessor platform("io.micronaut:micronaut-bom:$micronautVersion")
+    testAnnotationProcessor "io.micronaut:micronaut-inject-java"
+    testAnnotationProcessor "io.micronaut:micronaut-validation"
+
+    testImplementation project(':hello-data-test-data'), {
+        // we'll be using pure mocks
+        exclude group: 'com.agorapulse', module: 'dru-client-gorm'
+    }
+
+    testImplementation("org.spockframework:spock-core") {
+        exclude group: "org.codehaus.groovy", module: "groovy-all"
+    }
+
+    testImplementation "io.micronaut:micronaut-inject-groovy"
+    testImplementation "io.micronaut:micronaut-http-server-netty"
+    testImplementation "io.micronaut.test:micronaut-test-spock"
+
+    testImplementation "com.agorapulse:gru-micronaut:0.9.2"
+
+    // MariaDB support for Testcontainers
+    // more universal than MySQL as it works well even on M1 processors
+    testImplementation 'org.mariadb.jdbc:mariadb-java-client:2.7.3'
+    testImplementation "org.testcontainers:mariadb:1.15.3"
+
+    // only required for M1 processors, due issues in 1.15.3
+    testImplementation 'com.github.docker-java:docker-java-api:3.2.8'
+    testImplementation 'com.github.docker-java:docker-java-transport-zerodep:3.2.8'
+    testImplementation 'net.java.dev.jna:jna:5.8.0'
+}
+
+tasks.withType(JavaExec) {
+    classpath += configurations.developmentOnly
+    jvmArgs('-noverify', '-XX:TieredStopAtLevel=1', '-Dcom.sun.management.jmxremote')
+}
+
+tasks.withType(JavaCompile){
+    options.encoding = "UTF-8"
+    options.compilerArgs.add('-parameters')
+}

@@ -17,8 +17,7 @@ class VehicleController {
     Object show(Long id) {
         Vehicle vehicle = vehicleDataService.findById(id)
         if (!vehicle) {
-            render status: 404
-            return
+            throw new NoSuchElementException("No vehicle found for id: $id")
         }
         render contentType: 'application/json', text: objectMapper.writeValueAsString(
                 new VehicleResponse(
@@ -28,6 +27,10 @@ class VehicleController {
                         model: vehicle.model
                 )
         )
+    }
+
+    Object noSuchElement(NoSuchElementException e) {
+        render status: 404
     }
 
 }
