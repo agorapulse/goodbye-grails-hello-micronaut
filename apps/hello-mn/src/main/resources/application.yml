@@ -1,0 +1,7 @@
+dataSource:
+  dbCreate: update
+  url: jdbc:mysql://localhost:3306/hello?useSSL=false
+  driverClassName: com.mysql.cj.jdbc.Driver
+  dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+  username: grails
+  password: grails

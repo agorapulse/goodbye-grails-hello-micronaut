@@ -7,6 +7,7 @@ import groovy.transform.CompileStatic
 @CompileStatic
 interface VehicleDataService {
 
+    Vehicle save(Vehicle vehicle)
     Vehicle findById(Long id)
 
 }
