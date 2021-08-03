@@ -12,11 +12,6 @@ Map conventions = [
         limitCompileStaticExtensions: false,
         defAllowed                  : false,    // For controllers you can use Object in place of def, and in Domains add Closure to constraints/mappings closure fields.
         skipDefaultPackage          : true,     // For GSP files
-        compileStaticExtensions     : [
-                'org.grails.compiler.ValidateableTypeCheckingExtension',
-                'org.grails.compiler.NamedQueryTypeCheckingExtension',
-                'org.grails.compiler.HttpServletRequestTypeCheckingExtension',
-        ],
 ]
 System.setProperty(
         'enterprise.groovy.conventions',

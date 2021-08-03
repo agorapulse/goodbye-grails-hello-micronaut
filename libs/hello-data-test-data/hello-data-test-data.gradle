@@ -1,10 +1,29 @@
 dependencies {
     api project(':hello-data')
 
-    api "com.agorapulse:dru-client-gorm:0.8.1"
+    api "com.agorapulse:dru-client-micronaut-data:0.8.1"
     api "com.agorapulse:dru-parser-json:0.8.1"
 
+    compileOnly "io.micronaut:micronaut-inject-groovy:$micronautVersion"
+
+    testImplementation platform("io.micronaut:micronaut-bom:$micronautVersion")
+
+    testImplementation "io.micronaut:micronaut-inject-groovy:$micronautVersion"
+
+    testImplementation "io.micronaut.test:micronaut-test-spock"
     testImplementation("org.spockframework:spock-core") {
         exclude group: "org.codehaus.groovy", module: "groovy-all"
     }
+
+    testImplementation 'org.apache.logging.log4j:log4j-slf4j18-impl:2.14.1'
+
+    // MariaDB support for Testcontainers
+    // more universal than MySQL as it works well even on M1 processors
+    testImplementation 'org.mariadb.jdbc:mariadb-java-client:2.7.3'
+    testImplementation "org.testcontainers:mariadb:1.15.3"
+
+    // only required for M1 processors, due issues in 1.15.3
+    testImplementation 'com.github.docker-java:docker-java-api:3.2.8'
+    testImplementation 'com.github.docker-java:docker-java-transport-zerodep:3.2.8'
+    testImplementation 'net.java.dev.jna:jna:5.8.0'
 }

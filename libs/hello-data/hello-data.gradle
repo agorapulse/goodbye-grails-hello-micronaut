@@ -1,27 +1,21 @@
-sourceSets {
-    main {
-        groovy {
-            // the source folder for the GORM domain classes
-            srcDir 'grails-app/domain'
-            // if you also want to include some services
-            srcDir 'grails-app/services'
-        }
-    }
-}
-
 dependencies {
+    annotationProcessor platform("io.micronaut:micronaut-bom:$micronautVersion")
+    annotationProcessor 'io.micronaut.data:micronaut-data-processor'
+    annotationProcessor 'io.micronaut:micronaut-inject-java'
+    annotationProcessor 'io.micronaut:micronaut-validation'
+
     api platform("io.micronaut:micronaut-bom:$micronautVersion")
-    api 'io.micronaut.configuration:micronaut-hibernate-gorm'
+    api 'io.micronaut.data:micronaut-data-hibernate-jpa'
 
-    // GORM
-    compile "org.grails:grails-datastore-gorm-hibernate5:${project['gorm.hibernate.version']}"
+    api 'jakarta.persistence:jakarta.persistence-api:2.2.2'
 
-    // required for Grails Plugin generation
-    compileOnly "org.grails:grails-core:$grailsVersion"
+    implementation 'io.micronaut:micronaut-core'
+    implementation 'io.micronaut:micronaut-inject'
+    implementation 'io.micronaut:micronaut-validation'
+    implementation 'io.micronaut:micronaut-runtime'
 
-    // required for Micronaut service generation, if present
-    compileOnly "io.micronaut:micronaut-inject-groovy:$micronautVersion"
+    implementation 'io.micronaut.configuration:micronaut-jdbc-tomcat'
 
-    // required for jackson ignores generation for Micronaut
-    compileOnly 'com.fasterxml.jackson.core:jackson-databind:2.8.11.3'
+    compileOnly 'io.micronaut:micronaut-inject-groovy'
+    compileOnly 'io.micronaut.data:micronaut-data-processor'
 }

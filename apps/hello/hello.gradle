@@ -27,7 +27,7 @@ configurations {
 
 dependencies {
     implementation project(':hello-core')
-    implementation project(':hello-data')
+    implementation project(':hello-data-legacy')
 
     implementation 'com.agorapulse:micronaut-grails:3.0.7'
     implementation 'com.agorapulse:micronaut-grails-web-boot:3.0.7'
@@ -62,7 +62,7 @@ dependencies {
 
     compileOnly 'com.agorapulse:groovy-code-checks-gorm:0.9.0'
 
-    testCompile project(':hello-data-test-data')
+    testCompile project(':hello-data-legacy-test-data')
 
     testCompile "io.micronaut:micronaut-inject-groovy"
     testCompile "org.grails:grails-gorm-testing-support"

@@ -21,7 +21,7 @@ dependencies {
     testAnnotationProcessor "io.micronaut:micronaut-inject-java"
     testAnnotationProcessor "io.micronaut:micronaut-validation"
 
-    testImplementation project(':hello-data-test-data'), {
+    testImplementation project(':hello-data-legacy-test-data'), {
         // we'll be using pure mocks
         exclude group: 'com.agorapulse', module: 'dru-client-gorm'
     }

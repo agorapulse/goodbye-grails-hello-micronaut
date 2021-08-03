@@ -1,0 +1,15 @@
+datasources:
+  default:
+    url: jdbc:tc:mariadb:10.5.10:///test?useSSL=false&TC_DAEMON=true
+    driverClassName: org.testcontainers.jdbc.ContainerDatabaseDriver
+    username: grails
+    password: grails
+    dialect: MYSQL
+jpa:
+  default:
+    entity-scan:
+      packages: 'hello.legacy.model'
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: create-drop
