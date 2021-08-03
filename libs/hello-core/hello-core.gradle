@@ -1,5 +1,5 @@
 dependencies {
-    api project(':hello-data-legacy')
+    api project(':hello-data')
 
     annotationProcessor platform("io.micronaut:micronaut-bom:$micronautVersion")
     annotationProcessor "io.micronaut:micronaut-inject-java"
@@ -14,7 +14,7 @@ dependencies {
 
     compileOnly "io.micronaut:micronaut-inject-groovy"
 
-    testImplementation project(":hello-data-legacy-test-data")
+    testImplementation project(":hello-data-test-data")
 
     testImplementation("org.spockframework:spock-core") {
         exclude group: "org.codehaus.groovy", module: "groovy-all"

@@ -1,7 +1,7 @@
 datasources:
   default:
-    url: jdbc:mysql://localhost:3306/hello?useSSL=false
-    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:tc:mariadb:10.5.10:///test?useSSL=false&TC_DAEMON=true
+    driverClassName: org.testcontainers.jdbc.ContainerDatabaseDriver
     username: grails
     password: grails
     dialect: MYSQL
@@ -12,4 +12,4 @@ jpa:
     properties:
       hibernate:
         hbm2ddl:
-          auto: update
+          auto: create-drop

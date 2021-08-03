@@ -1,7 +1,7 @@
 package hello
 
 import groovy.transform.CompileStatic
-import hello.legacy.Vehicle
+import hello.legacy.model.Vehicle
 import io.micronaut.runtime.Micronaut
 
 @CompileStatic

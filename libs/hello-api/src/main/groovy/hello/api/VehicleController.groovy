@@ -1,8 +1,8 @@
 package hello.api
 
 import groovy.transform.CompileStatic
-import hello.legacy.Vehicle
-import hello.legacy.VehicleDataService
+import hello.legacy.model.Vehicle
+import hello.legacy.model.VehicleRepository
 import io.micronaut.http.HttpResponse
 import io.micronaut.http.annotation.Controller
 import io.micronaut.http.annotation.Error
@@ -12,15 +12,15 @@ import io.micronaut.http.annotation.Get
 @Controller('/vehicle')
 class VehicleController {
 
-    private final VehicleDataService vehicleDataService
+    private final VehicleRepository vehicleRepository
 
-    VehicleController(VehicleDataService vehicleDataService) {
-        this.vehicleDataService = vehicleDataService
+    VehicleController(VehicleRepository vehicleDataService) {
+        this.vehicleRepository = vehicleDataService
     }
 
     @Get('/{id}')
     VehicleResponse show(Long id) {
-        Vehicle vehicle = vehicleDataService.findById(id)
+        Vehicle vehicle = vehicleRepository.findById(id).orElse(null)
         if (!vehicle) {
             throw new NoSuchElementException("No vehicle found for id: $id")
         }

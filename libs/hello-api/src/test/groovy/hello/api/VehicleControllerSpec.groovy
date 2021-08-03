@@ -3,17 +3,16 @@ package hello.api
 import com.agorapulse.dru.Dru
 import com.agorapulse.gru.Gru
 import hello.HelloDataSets
-import hello.legacy.Vehicle
-import hello.legacy.VehicleDataService
+import io.micronaut.context.ApplicationContext
+import io.micronaut.context.ApplicationContextProvider
 import io.micronaut.test.annotation.MicronautTest
 import spock.lang.AutoCleanup
 import spock.lang.Specification
-import spock.mock.AutoAttach
 
 import javax.inject.Inject
 
 @MicronautTest
-class VehicleControllerSpec extends Specification {
+class VehicleControllerSpec extends Specification implements ApplicationContextProvider {
 
     @AutoCleanup
     Dru dru = Dru.create {
@@ -24,8 +23,7 @@ class VehicleControllerSpec extends Specification {
     Gru gru
 
     @Inject
-    @AutoAttach
-    VehicleDataService vehicleDataService
+    ApplicationContext applicationContext
 
     void 'render with gru'() {
         given:
@@ -41,8 +39,6 @@ class VehicleControllerSpec extends Specification {
 
         then:
             gru.verify()
-
-            1 * vehicleDataService.findById(1) >> dru.findByType(Vehicle).tap { id = 1 }
     }
 
 }
